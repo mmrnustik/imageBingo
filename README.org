@@ -1,6 +1,6 @@
 * Bingo
 
-** Prequisites
+** Prerequisites
 - convert from ImageMagick
 
 - python 2.7
