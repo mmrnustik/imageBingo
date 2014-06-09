@@ -1,0 +1,17 @@
+* Bingo
+
+** Prequisites
+- convert from ImageMagick
+
+- python 2.7
+- numpy
+- OpenCV (import cv2)
+
+** Usage
+./bingo.sh image_directory
+
+- If exists img/ and out/ directories are removed.
+- Images in image_directory are resized to 256x256 pixels and stored in img/ directory.
+- From images in img/ are generated bingo tiles into out/ directory.
+- From tiles in out/ is generated resulting pdf.
+

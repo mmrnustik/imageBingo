@@ -2,6 +2,7 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
 from reportlab.platypus import SimpleDocTemplate, Spacer, Image
 import os
+import sys
 
 input_dir = 'out/'
 

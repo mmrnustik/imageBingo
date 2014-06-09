@@ -44,13 +44,13 @@ def unique_permutations(N, n, count):
 if __name__ == '__main__':
     try:
         n, count, input_dir = sys.argv[1:4]
-
-        files = [input_dir + f for f in os.listdir(input_dir)]
+        n = int(n)
+        count = int(count)
+        files = [input_dir + '/' + f for f in os.listdir(input_dir)]
         # print files
         images = np.array([cv2.imread(f, 0) for f in files])
 
         i = 0
-        bingos = []
         for p in unique_permutations(len(images), n*n, count):
             img = bingo(images[p][:n*n])
             i += 1
