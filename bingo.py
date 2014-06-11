@@ -1,6 +1,7 @@
 import numpy as np
 import os
 import sys
+import math
 
 import cv2
 
@@ -42,7 +43,7 @@ def unique_permutations(N, n, count):
 
 
 if __name__ == '__main__':
-    try:
+    # try:
         n, count, input_dir = sys.argv[1:4]
         n = int(n)
         count = int(count)
@@ -51,17 +52,22 @@ if __name__ == '__main__':
         images = np.array([cv2.imread(f, 0) for f in files])
 
         i = 0
+
+        for i in range(int(math.ceil(len(images)/float(n*n)))):
+            img = bingo(images[i * (n*n): i * (n*n) + (n*n)])
+            cv2.imwrite('out/all{:02d}.png'.format(i), img)
+
         for p in unique_permutations(len(images), n*n, count):
             img = bingo(images[p][:n*n])
             i += 1
-            cv2.imwrite('out/{:02d}.png'.format(i), img)
+            cv2.imwrite('out/tile{:02d}.png'.format(i), img)
 
-    except Exception as e:
-        print e
-        print """
-        Usage:
-        python2 bingo.py n count input_dir
-        n - side of square for bingo (if you want 5x5 images, n is 5)
-        count - how many bingo tiles you want in pdf files
-        input_dir - directory with square images of the same size
-        """
+    # except Exception as e:
+    #     print e
+    #     print """
+    #     Usage:
+    #     python2 bingo.py n count input_dir
+    #     n - side of square for bingo (if you want 5x5 images, n is 5)
+    #     count - how many bingo tiles you want in pdf files
+    #     input_dir - directory with square images of the same size
+    #     """
